@@ -61,9 +61,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
-          script:
-
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
             sudo docker pull morefine/workflow
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker run --rm -d -p 5000:5000 morefine/workflow
